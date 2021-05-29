@@ -11,9 +11,9 @@ curl \
       "pagestart": 0,
       "filter": {
           "year": [2021], 
-          "series": ["tacoma"], 
-          "dealers": [36052],
-          "andfields": ["accessory", "packages"]
+          "series": ["tacoma", "4runner", "tundra"], 
+          "dealers": [27013],
+          "andfields": ["accessory", "packages", "dealer"]
         }
     }' \
   https://www.toyota.com/config/services/inventory/search/getInventory \
@@ -36,8 +36,9 @@ curl \
           total_msrp: .priceInfo.totalMSRP,
           availability_date: .availabilityDate,
           total_packages: .accessories | length,
-          packages: .accessories | map(.title) | join(", ")
+          packages: .accessories | map(.title) | join(", "),
+          created_at: now | strflocaltime("%Y-%m-%d %H:%M:%S")
         }' \
-  > tacomas.jsonl
+  >> tacomas.jsonl
 
-  cat tacomas.jsonl | jq -s '.' > tacomas.json
+cat tacomas.jsonl | jq -s '.' > tacomas.json
