@@ -2,7 +2,7 @@
 
 rm inventory.json inventory.jsonl
 
-declare -a arr=(27013 36052)
+declare -a arr=(2036 2042 2053 2050 2057 2044)
 
 for i in ${arr[@]}
 do
