@@ -14,11 +14,11 @@ do
       "group": true,
       "groupmode": "full",
       "relevancy": false,
-      "pagesize": 200,
+      "pagesize": 300,
       "pagestart": 0,
       "filter": {
-          "year": [2021], 
-          "series": ["tacoma", "4runner", "tundra"], 
+          "year": [2021, 2022], 
+          "series": ["tacoma", "4runner", "tundra", "rav4"], 
           "dealers": ["'$i'"],
           "andfields": ["accessory", "packages", "dealer"]
         }
