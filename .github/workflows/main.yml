@@ -1,24 +1,35 @@
-# name: fetch-data
+name: fetch-toyota-data
 
-# on:
-#   push:
-#   workflow_dispatch:
-#   schedule:
-#     - cron: '23 11 * * *'
-  
-# jobs:
-#   scheduled:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Check out this repo
-#         uses: actions/checkout@v2
-#       - name: Fetch latest data
-#         run: bash ./fetch-inventory.sh
-#       - name: Commit and push if it changed
-#         run: |-
-#           git config user.name "Automated"
-#           git config user.email "actions@users.noreply.github.com"
-#           git add inventory.json
-#           timestamp=$(date -u)
-#           git commit -m "Latest data: ${timestamp}" || exit 0
-#           git push
+on:
+  push:
+  schedule:
+    - cron: '23 11 * * *'
+  workflow_dispatch:
+
+jobs:
+  scheduled:
+    runs-on: ubuntu-latest
+    steps:
+    # Check out repository under $GITHUB_WORKSPACE, so the job can access it
+    - uses: actions/checkout@v4
+
+    # Install dependencies with `pip`
+    - name: Install requirements
+      run: |
+        python3 -m pip install csvkit
+
+    # Generate data
+    - name: Generate data
+      run: |
+        bash ./scripts/fetch-inventory.sh
+        bash ./scripts/merger.sh
+
+    # Commit all changed files to the repository
+    - name: Commit to the repo
+      run: |
+        git config user.name "Automated"
+        git config user.email "actions@users.noreply.github.com"
+        git add .
+        timestamp=$(date -u)
+        git commit -m "Latest data: ${timestamp}" || exit 0
+        git push

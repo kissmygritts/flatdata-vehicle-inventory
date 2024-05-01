@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 rm inventory.json
-IFS=', ' read -r -a array < dealers.txt
+IFS=', ' read -r -a array < data/dealers.txt
 
 for i in ${array[@]}
 do

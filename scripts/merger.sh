@@ -8,11 +8,5 @@ jq -r \
     | @csv
   ' inventory.json > data/inventory.csv
 
-ls -la data
-
 # join dealers and inventory csvs
-csvjoin -c "dealerId,dealer" dealers.csv data/inventory.csv > toyota-inventory.csv
-
-ls -la .
-
-cat toyota-inventory.csv
+csvjoin -c "dealerId,dealer" data/dealers.csv data/inventory.csv > toyota-inventory.csv
