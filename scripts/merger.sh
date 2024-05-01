@@ -9,4 +9,4 @@ jq -r \
   ' inventory.json > data/inventory.csv
 
 # join dealers and inventory csvs
-csvjoin -c "dealerId,dealer" dealers.csv data/inventory.csv > data/merged.csv
+csvjoin -c "dealerId,dealer" dealers.csv data/inventory.csv > toyota-inventory.csv
