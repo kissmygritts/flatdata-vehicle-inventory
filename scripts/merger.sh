@@ -1,5 +1,5 @@
 # json inventory to csv
-rm data/inventory.csv data/merged.csv
+rm -f data/inventory.csv toyota-inventory.csv
 
 jq -r \
   '

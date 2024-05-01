@@ -28,7 +28,7 @@ jobs:
     # Generate data
     - name: Generate data
       run: |
-        bash ./fetch-inventory.sh
+        bash ./scripts/fetch-inventory.sh
         bash ./scripts/merger.sh
 
     # Commit all changed files to the repository

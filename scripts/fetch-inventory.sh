@@ -5,7 +5,7 @@ IFS=', ' read -r -a array < dealers.txt
 
 for i in ${array[@]}
 do
-  curl \
+  curl --silent \
   --header "Content-Type: application/json" \
   --request POST \
   --data '{
