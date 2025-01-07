@@ -17,7 +17,7 @@ do
       "pagesize": 300,
       "pagestart": 0,
       "filter": {
-          "year": [2023, 2024], 
+          "year": [2024, 2025], 
           "series": ["tacoma", "4runner", "tundra", "rav4", "landcruiser"], 
           "dealers": ["'$i'"],
           "andfields": ["accessory", "packages", "dealer"]
